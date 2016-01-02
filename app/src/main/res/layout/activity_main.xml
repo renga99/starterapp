@@ -73,7 +73,7 @@
             android:padding="12dp"
             android:text="@string/Date"
             android:textColor="@color/colorWhite"
-            android:background="@color/colorPrimaryDark"/>
+            android:background="@drawable/specialbutton"/>
 
         <Spinner
             android:layout_width="wrap_content"
@@ -103,7 +103,7 @@
             android:padding="12dp"
             android:text="@string/camera"
             android:textColor="@color/colorWhite"
-            android:background="@color/colorPrimaryDark"/>
+            android:background="@drawable/specialbutton"/>
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_gps"
@@ -114,7 +114,7 @@
             android:padding="12dp"
             android:text="@string/gps"
             android:textColor="@color/colorWhite"
-            android:background="@color/colorPrimaryDark"/>
+            android:background="@drawable/specialbutton"/>
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_save"
@@ -125,7 +125,7 @@
             android:padding="12dp"
             android:text="@string/save"
             android:textColor="@color/colorWhite"
-            android:background="@color/colorPrimaryDark"/>
+            android:background="@drawable/specialbutton"/>
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_upload"
@@ -136,7 +136,7 @@
             android:padding="12dp"
             android:text="@string/upload"
             android:textColor="@color/colorWhite"
-            android:background="@color/colorPrimaryDark"/>
+            android:background="@drawable/specialbutton"/>
 
 
     </LinearLayout>
