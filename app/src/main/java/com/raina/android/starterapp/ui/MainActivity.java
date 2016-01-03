@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                         startUpdatesButtonHandler();
                     }
-                }, 10000);
+                }, 20000);
 
                 handler.postDelayed(new Runnable() {
                     @Override
@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         Toast.makeText(getApplicationContext(), "lat :" + mCurrentLocation.getLatitude() + " long : " +
                                 mCurrentLocation.getLongitude(), Toast.LENGTH_SHORT).show();
                     }
-                }, 10000);
+                }, 20000);
             }
         });
 
@@ -431,7 +431,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private void updateUI() {
 
         Log.d(TAG,"lat : "+ mCurrentLocation.getLatitude());
-        Log.d(TAG,"lon : "+ mCurrentLocation.getLongitude());
+        Log.d(TAG, "lon : " + mCurrentLocation.getLongitude());
         Log.d(TAG, "timenow : " + mLastUpdateTime);
 
     }
@@ -466,21 +466,25 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         // user launches the activity,
         // moves to a new location, and then changes the device orientation, the original location
         // is displayed as the activity is re-created.
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
 
+                if (mCurrentLocation == null) {
+                    mCurrentLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+                    mLastUpdateTime = DateFormat.getTimeInstance().format(new Date());
+                    //updateUI();
+                }
 
-
-        if (mCurrentLocation == null) {
-            mCurrentLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-            mLastUpdateTime = DateFormat.getTimeInstance().format(new Date());
-            updateUI();
-        }
-
-        // If the user presses the Start Updates button before GoogleApiClient connects, we set
-        // mRequestingLocationUpdates to true (see startUpdatesButtonHandler()). Here, we check
-        // the value of mRequestingLocationUpdates and if it is true, we start location updates.
-        if (mRequestingLocationUpdates) {
-            startLocationUpdates();
-        }
+                // If the user presses the Start Updates button before GoogleApiClient connects, we set
+                // mRequestingLocationUpdates to true (see startUpdatesButtonHandler()). Here, we check
+                // the value of mRequestingLocationUpdates and if it is true, we start location updates.
+                if (mRequestingLocationUpdates) {
+                    startLocationUpdates();
+                }
+            }
+        },5000);
     }
 
     /**
@@ -564,7 +568,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             Intent emailIntent = new Intent(Intent.ACTION_SEND);
             emailIntent.setType("text/plain");
-            //emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"renga99@gmail.com"});
+            emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"raina.anurag@gmail.com"});
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, "starter app data");
             emailIntent.putExtra(Intent.EXTRA_TEXT, "starter app csv file");
             File root = Environment.getExternalStorageDirectory();

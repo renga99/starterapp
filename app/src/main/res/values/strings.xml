@@ -13,6 +13,7 @@
     <string name="starter">The Starter App :p</string>
 
         <string-array name="planets_array">
+            <item>Choose an option</item>
             <item>Mercury</item>
             <item>Venus</item>
             <item>Earth</item>
